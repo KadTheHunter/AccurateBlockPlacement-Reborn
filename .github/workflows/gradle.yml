@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout repository'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Validate gradle wrapper'
-        uses: gradle/wrapper-validation-action@v1
-      - name: 'Setup JDK 17'
-        uses: actions/setup-java@v3
+        uses: gradle/wrapper-validation-action@v3
+      - name: 'Setup JDK 21'
+        uses: actions/setup-java@v4
         with:
           distribution: 'adopt'
           java-version: '17'
@@ -22,73 +22,11 @@ jobs:
         run: chmod +x ./gradlew
       - name: 'Build mod'
         run: ./gradlew build
-      - name: 'Get tag'
-        if: startsWith(github.ref, 'refs/tags/')
-        id: git_tag
-        run: echo ::set-output name=TAG::${GITHUB_REF/refs\/tags\//}
-      - name: Build changelog
-        if: startsWith(github.ref, 'refs/tags/')
-        id: changelog_release
-        uses: mikepenz/release-changelog-builder-action@v3
+      - name: 'Get the mod version'
+        id: get_mod_version
+        run: echo "MOD_VERSION=$(grep '^mod_version\s*=\s*' gradle.properties | awk -F'= ' '{print $2}')" >> $GITHUB_ENV
+      - name: 'Upload artifact'
+        uses: actions/upload-artifact@v4
         with:
-          commitMode: true
-          configurationJson: |
-            {
-              "categories": [
-                {
-                  "title": "### New Features",
-                  "labels": ["feat"]
-                },
-                {
-                  "title": "### Changes",
-                  "labels": ["change", "impr"]
-                },
-                {
-                  "title": "### Fixes",
-                  "labels": ["fix"]
-                },
-                {
-                  "title": "### Localization",
-                  "labels": ["loc"]
-                },
-                {
-                  "title": "### Other",
-                  "labels": []
-                }
-              ],
-              "ignore_labels": [
-                  "build",
-                "refactor",
-                "docs"
-                ],
-              "sort": {
-                "order": "DESC",
-                "on_property": "mergedAt"
-              },
-              "label_extractor": [
-                {
-                  "pattern": "(.*): (.*)",
-                  "target": "$1",
-                  "on_property": "title"
-                }
-              ],
-              "transformers": [
-                {
-                  "pattern": "(.*): (.*)",
-                  "target": "* $2"
-                }
-              ],
-              "template": "## Changelog\n\n#{{CHANGELOG}}",
-              "pr_template": "#{{TITLE}}",
-              "empty_template": "CHANGEME"
-            }
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: 'Draft a new release'
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v1
-        with:
-          draft: true
-          name: 'Accurate Block Placement v${{steps.git_tag.outputs.TAG}}'
-          body: ${{steps.changelog_release.outputs.changelog}}
-          files: 'build/libs/accurate-block-placement-${{steps.git_tag.outputs.TAG}}.jar'
+          name: AccurateBlockPlacementRebornMOD
+          path: "build/libs/accurate-block-placement-${{ env.MOD_VERSION }}.jar"
