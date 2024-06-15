@@ -4,7 +4,7 @@
 	"version": "${version}",
 
 	"name": "Accurate Block Placement",
-	"description": "Build at super speed with your bare hands!",
+	"description": "Build at super speed with your bare hands! §c(Unofficial ported version to 1.21)",
 	"authors": [
 		"Clayborn",
 		"Flourick",
@@ -33,9 +33,9 @@
 	],
 
 	"depends": {
-		"minecraft": ">=1.19",
-		"fabricloader": ">=0.14.11",
+		"minecraft": ">=1.21",
+		"fabricloader": ">=0.15.11",
 		"fabric-api": "*",
-		"java": ">=17"
+		"java": ">=21"
 	}
 }

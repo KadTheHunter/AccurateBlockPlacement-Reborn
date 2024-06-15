@@ -3,6 +3,7 @@ package net.clayborn.accurateblockplacement.mixin;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+import net.minecraft.component.DataComponentTypes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -167,7 +168,7 @@ public abstract class GameRendererMixin
 		}
 	}
 
-	@Inject(method = "updateTargetedEntity", at = @At("RETURN"))
+	@Inject(method = "updateCrosshairTarget", at = @At("RETURN"))
 	private void onUpdateTargetedEntityComplete(CallbackInfo info)
 	{
 		if(!AccurateBlockPlacementMod.isAccurateBlockPlacementEnabled) {
@@ -236,7 +237,7 @@ public abstract class GameRendererMixin
 		}
 
 		// if the item we are holding is activatable, let vanilla take over
-		if((currentItem.isFood() && !(currentItem instanceof AliasedBlockItem)) || doesItemHaveOverriddenUseMethod(currentItem)) {
+		if((currentItem.getDefaultStack().contains(DataComponentTypes.FOOD) && !(currentItem instanceof AliasedBlockItem)) || doesItemHaveOverriddenUseMethod(currentItem)) {
 			return;
 		}
 
@@ -248,7 +249,7 @@ public abstract class GameRendererMixin
 		// check the other hand if it has something in use and if so let vanilla take over
 		Hand otherHand = handOfCurrentItemInUse == Hand.MAIN_HAND ? Hand.OFF_HAND : Hand.MAIN_HAND;
 		ItemStack otherHandItemStack = client.player.getStackInHand(otherHand);
-		if(!otherHandItemStack.isEmpty() && (otherHandItemStack.getItem().isFood() || doesItemHaveOverriddenUseMethod(otherHandItemStack.getItem())) && client.player.isUsingItem()) {
+		if(!otherHandItemStack.isEmpty() && (otherHandItemStack.getItem().getDefaultStack().contains(DataComponentTypes.FOOD) || doesItemHaveOverriddenUseMethod(otherHandItemStack.getItem())) && client.player.isUsingItem()) {
 			return;
 		}
 
