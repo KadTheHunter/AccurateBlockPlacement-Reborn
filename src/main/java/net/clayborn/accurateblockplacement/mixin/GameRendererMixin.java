@@ -68,7 +68,7 @@ public abstract class GameRendererMixin
 				// hand is empty try the next one
 				continue;
 			}
-			else {
+			else if(itemInHand instanceof ItemStack) {
 				handOfCurrentItemInUse = thisHand;
 				return itemInHand.getItem();
 			}
@@ -225,7 +225,7 @@ public abstract class GameRendererMixin
 		}
 
 		// if the item we are holding is activatable, let vanilla take over
-		if((currentItem.getDefaultStack().contains(DataComponentTypes.FOOD) && !(currentItem instanceof AliasedBlockItem)) || doesItemHaveOverriddenUseMethod(currentItem)) {
+		if((currentItem.getDefaultStack().contains(DataComponentTypes.FOOD)) || doesItemHaveOverriddenUseMethod(currentItem)) {
 			return;
 		}
 
