@@ -5,6 +5,7 @@ import net.clayborn.accurateblockplacement.IKeyBindingAccessor;
 import net.clayborn.accurateblockplacement.IMinecraftClientAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.ComposterBlock;
 import net.minecraft.block.StairsBlock;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.GameRenderer;
@@ -249,6 +250,12 @@ public abstract class GameRendererMixin
 		// don't override behavior of clicking activatable blocks (and stairs) unless holding SNEAKING to replicate vanilla behaviors
 		if(isTargetBlockActivatable && !(targetBlock instanceof StairsBlock) && !client.player.isSneaking()) {
 			return;
+		}
+
+		// if the target block is a composter and the held item is compostable, let vanilla take over
+		if((targetBlock instanceof ComposterBlock) && (ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.containsKey(currentItem))) {
+			return;
+
 		}
 
 		// are they holding the use key and is the item to use a block?
