@@ -1,5 +1,11 @@
 {
   "net.clayborn.accurateblockplacement.togglevanillaplacement": "Переключить режим размещения",
   "net.clayborn.accurateblockplacement.modplacementmodemessage": "Режим аккуратного размещения блоков включён.",
-  "net.clayborn.accurateblockplacement.vanillaplacementmodemessage": "Режим аккуратного размещения блоков выключен."  
+  "net.clayborn.accurateblockplacement.vanillaplacementmodemessage": "Режим аккуратного размещения блоков выключен.",
+  "net.clayborn.accurateblockplacement.togglefastbreaking": "Toggle Breaking Mode",
+  "net.clayborn.accurateblockplacement.fastbreakingenabled": "Fast block breaking mode is now enabled!",
+  "net.clayborn.accurateblockplacement.fastbreakingdisabled": "Vanilla block breaking mode is now enabled!",
+  "text.autoconfig.accurateblockplacement.title": "Accurate Block Placement",
+  "text.autoconfig.accurateblockplacement.option.accuratePlacementEnabled": "Accurate block placement enabled",
+  "text.autoconfig.accurateblockplacement.option.fastBreakingEnabled": "Fast block breaking enabled"
 }

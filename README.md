@@ -8,7 +8,7 @@ This fork adds support for versions 1.19-1.21.3
 The version numbers are continuing from the original [Accurate Block Placement](https://www.curseforge.com/minecraft/mc-mods/accurate-block-placement) mod.
 
 This is a client side mod made for [Fabric](https://fabricmc.net), but it also works with [Quilt](https://quiltmc.org). 
-[Fabric API](https://modrinth.com/mod/fabric-api) is required.
+[Fabric API](https://modrinth.com/mod/fabric-api) is required, [Mod Menu](https://modrinth.com/mod/modmenu) and [Cloth Config API](https://modrinth.com/mod/cloth-config) are optional.
 
 **[WARNING]** This mod could get you banned on some servers with anti-cheats!
 >This includes (but is not whatsoever limited to) Hypixel & most competitive servers.

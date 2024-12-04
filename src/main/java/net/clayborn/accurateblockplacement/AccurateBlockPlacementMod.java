@@ -1,5 +1,6 @@
 package net.clayborn.accurateblockplacement;
 
+import net.clayborn.accurateblockplacement.config.AccurateBlockPlacementConfig;
 import org.lwjgl.glfw.GLFW;
 
 import net.fabricmc.api.ClientModInitializer;
@@ -23,6 +24,8 @@ public class AccurateBlockPlacementMod implements ClientModInitializer
 	@Override
 	public void onInitializeClient()
 	{
+		AccurateBlockPlacementConfig.load();
+
 		MC = MinecraftClient.getInstance();
 
 		KeyBinding place_keybind = KeyBindingHelper.registerKeyBinding(new KeyBinding("net.clayborn.accurateblockplacement.togglevanillaplacement", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "Accurate Block Placement"));
@@ -32,11 +35,12 @@ public class AccurateBlockPlacementMod implements ClientModInitializer
 		ClientTickEvents.END_CLIENT_TICK.register(e -> {
 			while(place_keybind.wasPressed()) {
 				isAccurateBlockPlacementEnabled = !isAccurateBlockPlacementEnabled;
-				
+				AccurateBlockPlacementConfig.save();
 				MC.inGameHud.getChatHud().addMessage(isAccurateBlockPlacementEnabled ? Text.translatable("net.clayborn.accurateblockplacement.modplacementmodemessage") : Text.translatable("net.clayborn.accurateblockplacement.vanillaplacementmodemessage"));
 			}
 			while(break_keybind.wasPressed()) {
 				isFastBlockBreakingEnabled = !isFastBlockBreakingEnabled;
+				AccurateBlockPlacementConfig.save();
 				MC.inGameHud.getChatHud().addMessage(isFastBlockBreakingEnabled ? Text.translatable("net.clayborn.accurateblockplacement.fastbreakingenabled") : Text.translatable("net.clayborn.accurateblockplacement.fastbreakingdisabled"));
 			}
 		});
