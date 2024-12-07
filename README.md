@@ -1,22 +1,45 @@
-# Accurate Block Placement Reborn
-[Modrinth Page](https://modrinth.com/mod/accurate-block-placement-reborn)
+<h1 align="center">Accurate Block Placement: Reborn</h1>
 
-[CurseForge Page](https://www.curseforge.com/minecraft/mc-mods/accurate-block-placement-reborn)
+<p align="center">
+<a href="https://github.com/hschwar/AccurateBlockPlacement-Reborn/releases">
+<img alt="Current Modrinth Release" src="https://img.shields.io/modrinth/v/kzwxhsjp?style=for-the-badge&logo=modrinth"/>
+</a>
+<a href="https://github.com/hschwar/AccurateBlockPlacement-Reborn/releases">
+<img alt="Current CurseForge Release" src="https://img.shields.io/curseforge/v/886719?style=for-the-badge&logo=curseforge"/>
+</a>
+<a href="https://github.com/hschwar/AccurateBlockPlacement-Reborn/releases">
+<img alt="Current GitHub Release" src="https://img.shields.io/github/v/release/hschwar/AccurateBlockPlacement-Reborn?label=VERSION&style=for-the-badge&logo=github"/>
+</a>
+<br/><br/>
+<a>
+<img alt="Modrinth Downloads" src="https://img.shields.io/modrinth/dt/kzwxhsjp?style=for-the-badge&logo=modrinth"/>
+</a>
+<a>
+<img alt="CurseForge Downloads" src="https://img.shields.io/curseforge/dt/886719?style=for-the-badge&logo=curseforge"/>
+</a>
+<br/><br/>
+</p>
 
-This fork adds support for versions 1.19-1.21.3
+AccurateBlockPlacement: Reborn is a client-side mod for the [Fabric](https://fabricmc.net) and [Quilt](https://quiltmc.org) mod-loaders.
 
-The version numbers are continuing from the original [Accurate Block Placement](https://www.curseforge.com/minecraft/mc-mods/accurate-block-placement) mod.
+[Fabric API](https://modrinth.com/mod/fabric-api) is required, [Mod Menu](https://modrinth.com/mod/modmenu) and [Cloth Config API](https://modrinth.com/mod/cloth-config) are optional, but strongly recommended.
 
-This is a client side mod made for [Fabric](https://fabricmc.net), but it also works with [Quilt](https://quiltmc.org). 
-[Fabric API](https://modrinth.com/mod/fabric-api) is required, [Mod Menu](https://modrinth.com/mod/modmenu) and [Cloth Config API](https://modrinth.com/mod/cloth-config) are optional.
+## Features
+**[WARNING]** This mod could get you banned on some servers with anti-cheats! Please check the servers rules before using this mod.
 
-**[WARNING]** This mod could get you banned on some servers with anti-cheats!
->This includes (but is not whatsoever limited to) Hypixel & most competitive servers.
+### Accurate Block Placement
+Accurate Block Placement makes placing blocks a smooth and reliable process. The best way to explain it is the following GIF:
 
-In vanilla Minecraft, if you hold right-click with blocks, the game will place a block every 4 ticks. This means that if you try to place a row of blocks, you might miss some blocks or place too many. This mod fixes both problems, as seen in the GIF below.
+<img alt="Mod Showcase" src="https://cdn-raw.modrinth.com/data/kzwxhsjp/images/94a4de623aca8c5afdc07edca76ed663127d93b2.gif" width="512" height="288" />
 
-You can set a keybind to toggle this mod on or off.
-![Mod Showcase](https://cdn-raw.modrinth.com/data/kzwxhsjp/images/94a4de623aca8c5afdc07edca76ed663127d93b2.gif)
+This can be toggled on or off by way of a configurable keybind. Accurate Block Placement is enabled by default, with no bound key.
 
-**NOTE:**
-This mod is not to be confused with the [Tweakeroo](https://www.curseforge.com/minecraft/mc-mods/tweakeroo)/[Carpet](https://modrinth.com/mod/carpet) feature of the same name, which is a completely different thing. 
+### Fast Block Breaking
+Fast Block Breaking makes breaking blocks much easier and more consistent, by removing the Mining Cooldown when breaking blocks.
+
+No GIF for this one yet :(
+
+This can be toggled on or off by way of a configurable keybind. Fast Block Breaking is disabled by default, with no bound key.
+
+## License
+Accurate Block Placement: Reborn is provided under the [MIT License](https://github.com/hschwar/AccurateBlockPlacement-Reborn/blob/main/LICENSE).
