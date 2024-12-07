@@ -1,10 +1,10 @@
 <h1 align="center">Accurate Block Placement: Reborn</h1>
 
 <p align="center">
-<a href="https://github.com/hschwar/AccurateBlockPlacement-Reborn/releases">
+<a href="https://modrinth.com/mod/accurate-block-placement-reborn">
 <img alt="Current Modrinth Release" src="https://img.shields.io/modrinth/v/kzwxhsjp?style=for-the-badge&logo=modrinth"/>
 </a>
-<a href="https://github.com/hschwar/AccurateBlockPlacement-Reborn/releases">
+<a href="https://www.curseforge.com/minecraft/mc-mods/accurate-block-placement-reborn">
 <img alt="Current CurseForge Release" src="https://img.shields.io/curseforge/v/886719?style=for-the-badge&logo=curseforge"/>
 </a>
 <a href="https://github.com/hschwar/AccurateBlockPlacement-Reborn/releases">
