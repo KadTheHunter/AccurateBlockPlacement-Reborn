@@ -34,7 +34,7 @@ Accurate Block Placement makes placing blocks a smooth and reliable process when
 
 Enabled by default, can be toggled on or off through the config or by way of a configurable keybind (default: Not Bound).
 
-### Fast Block Breaking
+### Fast Block Breaking (v1.3.0+ for 1.21.3+)
 Fast Block Breaking makes breaking blocks much easier and more consistent, by removing the Mining Cooldown when breaking blocks.
 
 No GIF for this one yet :(, _essentially haste insta-mining but for creative mode_
