@@ -20,26 +20,26 @@
 <br/><br/>
 </p>
 
-AccurateBlockPlacement: Reborn is a client-side mod for the [Fabric](https://fabricmc.net) and [Quilt](https://quiltmc.org) mod-loaders.
+AccurateBlockPlacement: Reborn is a client-side mod for [Fabric](https://fabricmc.net).
 
 [Fabric API](https://modrinth.com/mod/fabric-api) is required, [Mod Menu](https://modrinth.com/mod/modmenu) and [Cloth Config API](https://modrinth.com/mod/cloth-config) are optional, but strongly recommended.
 
 ## Features
-**[WARNING]** This mod could get you banned on some servers with anti-cheats! Please check the servers rules before using this mod.
+**WARNING:** This mod may be considered a "cheat" on some servers (and detected as so)! Please check the server's rules before using this mod. _Use this at your own risk._
 
 ### Accurate Block Placement
-Accurate Block Placement makes placing blocks a smooth and reliable process. The best way to explain it is the following GIF:
+Accurate Block Placement makes placing blocks a smooth and reliable process when holding right click. The best way to explain it is the following GIF:
 
 <img alt="Mod Showcase" src="https://cdn-raw.modrinth.com/data/kzwxhsjp/images/94a4de623aca8c5afdc07edca76ed663127d93b2.gif" width="512" height="288" />
 
-This can be toggled on or off by way of a configurable keybind. Accurate Block Placement is enabled by default, with no bound key.
+Enabled by default, can be toggled on or off through the config or by way of a configurable keybind (default: Not Bound).
 
 ### Fast Block Breaking
 Fast Block Breaking makes breaking blocks much easier and more consistent, by removing the Mining Cooldown when breaking blocks.
 
-No GIF for this one yet :(
+No GIF for this one yet :(, _essentially haste insta-mining but for creative mode_
 
-This can be toggled on or off by way of a configurable keybind. Fast Block Breaking is disabled by default, with no bound key.
+Disabled by default, can be toggled on or off through the config or by way of a configurable keybind (default: Not Bound).
 
 ## License
 Accurate Block Placement: Reborn is provided under the [MIT License](https://github.com/hschwar/AccurateBlockPlacement-Reborn/blob/main/LICENSE).
