@@ -24,6 +24,10 @@ AccurateBlockPlacement: Reborn is a client-side mod for [Fabric](https://fabricm
 
 [Fabric API](https://modrinth.com/mod/fabric-api) is required, [Mod Menu](https://modrinth.com/mod/modmenu) and [Cloth Config API](https://modrinth.com/mod/cloth-config) are optional, but strongly recommended.
 
+---
+
+*Although many experienced minecraft players know exactly how to time their clicks in order to rapidly place blocks with no mistakes, why should it be that difficult? In this mod, if you hold your 'use key' (usually RMB) and look at a new block it will automatically place it no matter how fast you move. No more need to time when you click or look in order to accurately place blocks quickly!*
+
 ## Features
 **WARNING:** This mod may be considered a "cheat" on some servers (and detected as so)! Please check the server's rules before using this mod. _Use this at your own risk._
 
