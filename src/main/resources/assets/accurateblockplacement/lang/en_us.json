@@ -1,10 +1,10 @@
 {
   "net.clayborn.accurateblockplacement.togglevanillaplacement": "Toggle Placement Mode",
-  "net.clayborn.accurateblockplacement.modplacementmodemessage": "Accurate block placement mode is now enabled!",
-  "net.clayborn.accurateblockplacement.vanillaplacementmodemessage": "Vanilla block placement mode is now enabled!",
+  "net.clayborn.accurateblockplacement.modplacementmodemessage": "Accurate block placement: §2true",
+  "net.clayborn.accurateblockplacement.vanillaplacementmodemessage": "Accurate block placement: §4false",
   "net.clayborn.accurateblockplacement.togglefastbreaking": "Toggle Breaking Mode",
-  "net.clayborn.accurateblockplacement.fastbreakingenabled": "Fast block breaking mode is now enabled!",
-  "net.clayborn.accurateblockplacement.fastbreakingdisabled": "Vanilla block breaking mode is now enabled!",
+  "net.clayborn.accurateblockplacement.fastbreakingenabled": "Fast block breaking: §2true",
+  "net.clayborn.accurateblockplacement.fastbreakingdisabled": "Fast block breaking: §4false",
   "text.autoconfig.accurateblockplacement.title": "Accurate Block Placement",
   "text.autoconfig.accurateblockplacement.option.accuratePlacementEnabled": "Accurate block placement enabled",
   "text.autoconfig.accurateblockplacement.option.fastBreakingEnabled": "Fast block breaking enabled"

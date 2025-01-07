@@ -36,12 +36,12 @@ public class AccurateBlockPlacementMod implements ClientModInitializer
 			while(place_keybind.wasPressed()) {
 				isAccurateBlockPlacementEnabled = !isAccurateBlockPlacementEnabled;
 				AccurateBlockPlacementConfig.save();
-				MC.inGameHud.getChatHud().addMessage(isAccurateBlockPlacementEnabled ? Text.translatable("net.clayborn.accurateblockplacement.modplacementmodemessage") : Text.translatable("net.clayborn.accurateblockplacement.vanillaplacementmodemessage"));
+				MC.player.sendMessage(isAccurateBlockPlacementEnabled ? Text.translatable("net.clayborn.accurateblockplacement.modplacementmodemessage") : Text.translatable("net.clayborn.accurateblockplacement.vanillaplacementmodemessage"), true);
 			}
 			while(break_keybind.wasPressed()) {
 				isFastBlockBreakingEnabled = !isFastBlockBreakingEnabled;
 				AccurateBlockPlacementConfig.save();
-				MC.inGameHud.getChatHud().addMessage(isFastBlockBreakingEnabled ? Text.translatable("net.clayborn.accurateblockplacement.fastbreakingenabled") : Text.translatable("net.clayborn.accurateblockplacement.fastbreakingdisabled"));
+				MC.player.sendMessage(isFastBlockBreakingEnabled ? Text.translatable("net.clayborn.accurateblockplacement.fastbreakingenabled") : Text.translatable("net.clayborn.accurateblockplacement.fastbreakingdisabled"), true);
 			}
 		});
 	}
