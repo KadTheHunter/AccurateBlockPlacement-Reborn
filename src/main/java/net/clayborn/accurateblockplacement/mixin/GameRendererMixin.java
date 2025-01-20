@@ -3,10 +3,7 @@ package net.clayborn.accurateblockplacement.mixin;
 import net.clayborn.accurateblockplacement.AccurateBlockPlacementMod;
 import net.clayborn.accurateblockplacement.IKeyBindingAccessor;
 import net.clayborn.accurateblockplacement.IMinecraftClientAccessor;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ComposterBlock;
-import net.minecraft.block.StairsBlock;
+import net.minecraft.block.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.component.DataComponentTypes;
@@ -249,6 +246,17 @@ public abstract class GameRendererMixin
 
 		// don't override behavior of clicking activatable blocks (and stairs) unless holding SNEAKING to replicate vanilla behaviors
 		if(isTargetBlockActivatable && !(targetBlock instanceof StairsBlock) && !client.player.isSneaking()) {
+			return;
+		}
+
+		// if the target block is a BlockWithEntity (i.e. storage container) and the player has moved less than 0.6 blocks, let vanilla take over
+		// TODO: Investigate the secondary check, it doesn't seem to be working as intended
+		if((targetBlock instanceof BlockWithEntity) && (lastPlayerPlacedBlockPos != null && lastPlayerPlacedBlockPos.distanceTo(client.player.getPos()) <= 0.6)) {
+			return;
+		}
+
+		// if the hand item and target block are both scaffolding, let vanilla take over
+		if ((currentItem instanceof ScaffoldingItem) && (targetBlock instanceof ScaffoldingBlock)) {
 			return;
 		}
 
