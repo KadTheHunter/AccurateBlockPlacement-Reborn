@@ -31,7 +31,28 @@ public class AccurateBlockPlacementConfigScreen {
                         Text.translatable("text.autoconfig.accurateblockplacement.option.fastBreakingEnabled"),
                         isFastBlockBreakingEnabled)
                 .setDefaultValue(AccurateBlockPlacementConfig.DEFAULT_FAST_BREAKING_ENABLED)
-                .setSaveConsumer((replace) -> isFastBlockBreakingEnabled = replace).build());
+                .setSaveConsumer((replace) -> isFastBlockBreakingEnabled = replace)
+                .build());
+        // Confirmation
+        general.addEntry(entryBuilder
+                .startBooleanToggle(
+                        Text.translatable("text.autoconfig.accurateblockplacement.option.confirmation"),
+                        AccurateBlockPlacementConfig.confirmation)
+                .setDefaultValue(AccurateBlockPlacementConfig.DEFAULT_CONFIRMATION)
+                .setSaveConsumer((replace) -> AccurateBlockPlacementConfig.confirmation = replace)
+                .build());
+        // Confirmation Type
+        enum ConfirmTypeLabel {
+            CHAT,
+            HUD
+        }
+        general.addEntry(entryBuilder
+                .startEnumSelector(Text.translatable("text.autoconfig.accurateblockplacement.option.confirmationType"),
+                        ConfirmTypeLabel.class,
+                        !AccurateBlockPlacementConfig.confirmationType ? ConfirmTypeLabel.CHAT : ConfirmTypeLabel.HUD)
+                .setDefaultValue(ConfirmTypeLabel.HUD)
+                .setSaveConsumer((replace) -> AccurateBlockPlacementConfig.confirmationType = replace == ConfirmTypeLabel.HUD)
+                .build());
         return builder.build();
     }
 }
