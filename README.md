@@ -7,8 +7,8 @@
 <a href="https://www.curseforge.com/minecraft/mc-mods/accurate-block-placement-reborn">
 <img alt="Current CurseForge Release" src="https://img.shields.io/curseforge/v/886719?style=for-the-badge&logo=curseforge"/>
 </a>
-<a href="https://github.com/hschwar/AccurateBlockPlacement-Reborn/releases">
-<img alt="Current GitHub Release" src="https://img.shields.io/github/v/release/hschwar/AccurateBlockPlacement-Reborn?label=VERSION&style=for-the-badge&logo=github"/>
+<a href="https://github.com/KadTheHunter/AccurateBlockPlacement-Reborn/releases">
+<img alt="Current GitHub Release" src="https://img.shields.io/github/v/release/KadTheHunter/AccurateBlockPlacement-Reborn?label=VERSION&style=for-the-badge&logo=github"/>
 </a>
 <br/><br/>
 <a>
