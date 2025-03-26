@@ -218,7 +218,7 @@ public abstract class GameRendererMixin
 		}
 
 		// if the item isn't a block or a mining tool (axe, hoe, pickaxe, shovel), let vanilla take over
-		if(!(currentItem instanceof BlockItem) && !(currentItem instanceof MiningToolItem)) {
+		if(!(currentItem instanceof BlockItem)) {
 			return;
 		}
 
@@ -290,7 +290,7 @@ public abstract class GameRendererMixin
 				facingAxisLastPlacedPos = new Vec3d(lastPlacedBlockPos.getX(), lastPlacedBlockPos.getY(), lastPlacedBlockPos.getZ()).getComponentAlongAxis(axis);
 
 				// fixes placement being directional because getting the correct side pos is apparently too hard
-				if(targetPlacement.getSide().getName().equals("west") || targetPlacement.getSide().getName().equals("north")) {
+				if(targetPlacement.getSide().toString().equals("west") || targetPlacement.getSide().toString().equals("north")) {
 					facingAxisLastPlacedPos += 1.0d;
 				}
 			}
