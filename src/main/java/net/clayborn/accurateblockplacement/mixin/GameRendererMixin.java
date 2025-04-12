@@ -217,7 +217,7 @@ public abstract class GameRendererMixin
 			return;
 		}
 
-		// if the item isn't a block or a mining tool (axe, hoe, pickaxe, shovel), let vanilla take over
+		// if the item isn't a block, let vanilla take over
 		if(!(currentItem instanceof BlockItem)) {
 			return;
 		}
@@ -227,7 +227,7 @@ public abstract class GameRendererMixin
 			return;
 		}
 
-		// if we aren't looking at a block (so we can place), let vanilla take over
+		// if we aren't looking at a block, let vanilla take over
 		if(client.crosshairTarget.getType() != HitResult.Type.BLOCK) {
 			return;
 		}
@@ -263,7 +263,6 @@ public abstract class GameRendererMixin
 		// if the target block is a composter and the held item is compostable, let vanilla take over
 		if((targetBlock instanceof ComposterBlock) && (ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.containsKey(currentItem))) {
 			return;
-
 		}
 
 		// are they holding the use key and is the item to use a block?
