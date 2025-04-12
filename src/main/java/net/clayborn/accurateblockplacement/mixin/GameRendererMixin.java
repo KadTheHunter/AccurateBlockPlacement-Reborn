@@ -223,7 +223,7 @@ public abstract class GameRendererMixin
 		}
 
 		// if the item we are holding is activatable, let vanilla take over
-		if((currentItem.getDefaultStack().contains(DataComponentTypes.FOOD)) || doesItemHaveOverriddenUseMethod(currentItem)) {
+		if(doesItemHaveOverriddenUseMethod(currentItem)) {
 			return;
 		}
 
@@ -235,7 +235,7 @@ public abstract class GameRendererMixin
 		// check the other hand if it has something in use and if so let vanilla take over
 		Hand otherHand = handOfCurrentItemInUse == Hand.MAIN_HAND ? Hand.OFF_HAND : Hand.MAIN_HAND;
 		ItemStack otherHandItemStack = client.player.getStackInHand(otherHand);
-		if(!otherHandItemStack.isEmpty() && (otherHandItemStack.getItem().getDefaultStack().contains(DataComponentTypes.FOOD) || doesItemHaveOverriddenUseMethod(otherHandItemStack.getItem())) && client.player.isUsingItem()) {
+		if(!otherHandItemStack.isEmpty() && (doesItemHaveOverriddenUseMethod(otherHandItemStack.getItem())) && client.player.isUsingItem()) {
 			return;
 		}
 
