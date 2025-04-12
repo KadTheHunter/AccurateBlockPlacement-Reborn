@@ -66,7 +66,7 @@ public abstract class GameRendererMixin
 				// hand is empty try the next one
 				continue;
 			}
-			else if(itemInHand instanceof ItemStack) {
+			else if(itemInHand instanceof ItemStack && itemInHand.getItem() instanceof BlockItem) {
 				handOfCurrentItemInUse = thisHand;
 				return itemInHand.getItem();
 			}
