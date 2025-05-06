@@ -18,6 +18,9 @@
 <img alt="CurseForge Downloads" src="https://img.shields.io/curseforge/dt/886719?style=for-the-badge&logo=curseforge"/>
 </a>
 <br/><br/>
+<a href="https://www.buymeacoffee.com/roniemartinez" target="_blank">
+<img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="31" width="164">
+</a>
 </p>
 
 AccurateBlockPlacement: Reborn is a client-side mod for [Fabric](https://fabricmc.net).
