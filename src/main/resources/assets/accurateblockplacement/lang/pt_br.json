@@ -7,5 +7,9 @@
   "net.clayborn.accurateblockplacement.fastbreakingdisabled": "Vanilla block breaking mode is now enabled!",
   "text.autoconfig.accurateblockplacement.title": "Accurate Block Placement",
   "text.autoconfig.accurateblockplacement.option.accuratePlacementEnabled": "Accurate block placement enabled",
-  "text.autoconfig.accurateblockplacement.option.fastBreakingEnabled": "Fast block breaking enabled"
+  "text.autoconfig.accurateblockplacement.option.fastBreakingEnabled": "Fast block breaking enabled",
+  "text.autoconfig.accurateblockplacement.option.confirmation": "Confirmation on Toggle",
+  "text.autoconfig.accurateblockplacement.option.confirmationType": "Confirmation Type",
+  "text.autoconfig.accurateblockplacement.option.confirmationType.CHAT": "Chat",
+  "text.autoconfig.accurateblockplacement.option.confirmationType.HUD": "HUD"
 }
