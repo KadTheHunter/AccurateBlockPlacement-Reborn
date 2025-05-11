@@ -1,0 +1,15 @@
+{
+  "net.clayborn.accurateblockplacement.togglevanillaplacement": "Переключить режим размещения",
+  "net.clayborn.accurateblockplacement.modplacementmodemessage": "§7Режим аккуратного размещения блоков: §aВключён",
+  "net.clayborn.accurateblockplacement.vanillaplacementmodemessage": "§7Режим аккуратного размещения блоков: §cВыключен",
+  "net.clayborn.accurateblockplacement.togglefastbreaking": "Переключить режим ломания блоков",
+  "net.clayborn.accurateblockplacement.fastbreakingenabled": "§7Быстрое ломание блоков: §Включено",
+  "net.clayborn.accurateblockplacement.fastbreakingdisabled": "§7Быстрое ломание блоков: §cВыключенно",
+  "text.autoconfig.accurateblockplacement.title": "Accurate Block Placemen",
+  "text.autoconfig.accurateblockplacement.option.accuratePlacementEnabled": "Режим аккуратного размещения блоков включён",
+  "text.autoconfig.accurateblockplacement.option.fastBreakingEnabled": "Быстрое ломание блоков включено",
+  "text.autoconfig.accurateblockplacement.option.confirmation": "Информировать о переключении режима",
+  "text.autoconfig.accurateblockplacement.option.confirmationType": "Вывод информации",
+  "text.autoconfig.accurateblockplacement.option.confirmationType.CHAT": "Чат",
+  "text.autoconfig.accurateblockplacement.option.confirmationType.HUD": "HUD"
+}
