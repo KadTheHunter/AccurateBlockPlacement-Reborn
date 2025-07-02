@@ -314,8 +314,7 @@ public abstract class GameRendererMixin
 
 			boolean isOnCooldown = autoRepeatWaitingOnCooldown && clientAccessor.accurateblockplacement_GetItemUseCooldown() > 0 && !hasMouseMoved;
 
-			// if [ we are still holding the same block we start pressing 'use' with] AND
-			// [ [ this is a fresh keypress ] OR
+			// if [ [ this is a fresh keypress ] OR
 			// [ [ we have a fresh place to put a block ] AND
 			// [ auto-repeat isn't on cooldown OR the mouse has moved enough ] ]
 			// we can try to place a block
