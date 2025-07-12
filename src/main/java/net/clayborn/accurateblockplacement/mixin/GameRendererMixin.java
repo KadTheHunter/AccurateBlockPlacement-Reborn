@@ -66,7 +66,9 @@ public abstract class GameRendererMixin
 				// hand is empty try the next one
 				continue;
 			}
-			else if(itemInHand instanceof ItemStack && itemInHand.getItem() instanceof BlockItem) {
+			else if(itemInHand instanceof ItemStack && (itemInHand.getItem() instanceof BlockItem || itemInHand.getItem() instanceof ShovelItem || itemInHand.getItem() instanceof HoeItem || itemInHand.getItem() instanceof AxeItem)) {
+				// found a block
+				// or found an item that can be placed, used or interacted with a block
 				handOfCurrentItemInUse = thisHand;
 				return itemInHand.getItem();
 			}
@@ -141,7 +143,8 @@ public abstract class GameRendererMixin
 	@Unique
 	private static boolean doesItemHaveOverriddenUseMethod(Item item)
 	{
-		if(itemUseMethodName == null) {
+		// have to mark other Item types because they have vanilla usages that would get flagged, despite being usable in/by ABP:R
+		if(itemUseMethodName == null || item instanceof ShovelItem || item instanceof HoeItem || item instanceof AxeItem) {
 			return false;
 		}
 
@@ -212,12 +215,13 @@ public abstract class GameRendererMixin
 			return;
 		}
 
-		// if the item isn't a block, let vanilla take over
-		if(!(currentItem instanceof BlockItem)) {
+		// if the item isn't a block, shovel, hoe or axe, let vanilla take over
+		if(!(currentItem instanceof BlockItem || currentItem instanceof ShovelItem || currentItem instanceof HoeItem || currentItem instanceof AxeItem)) {
 			return;
 		}
 
 		// if the item we are holding is activatable, let vanilla take over
+		// important to note that this will NOT catch Hoes, Shovels or Axes, as they're exempted in the method called
 		if(doesItemHaveOverriddenUseMethod(currentItem)) {
 			return;
 		}
