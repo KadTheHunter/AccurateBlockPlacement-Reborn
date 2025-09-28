@@ -1,4 +1,5 @@
 {
+  "key.category.accurateblockplacement.category": "Accurate Block Placement",
   "net.clayborn.accurateblockplacement.togglevanillaplacement": "Toggle Placement Mode",
   "net.clayborn.accurateblockplacement.modplacementmodemessage": "§7Accurate Block Placement: §aEnabled",
   "net.clayborn.accurateblockplacement.vanillaplacementmodemessage": "§7Accurate Block Placement: §cDisabled",

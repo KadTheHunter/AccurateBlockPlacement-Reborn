@@ -250,7 +250,7 @@ public abstract class GameRendererMixin
 
 		// if the target block is a BlockWithEntity (i.e. storage container) and the player has moved less than 0.6 blocks, let vanilla take over
 		// TODO: Investigate the secondary check, it doesn't seem to be working as intended
-		if((targetBlock instanceof BlockWithEntity) && (lastPlayerPlacedBlockPos != null && lastPlayerPlacedBlockPos.distanceTo(client.player.getPos()) <= 0.6)) {
+		if((targetBlock instanceof BlockWithEntity) && (lastPlayerPlacedBlockPos != null && lastPlayerPlacedBlockPos.distanceTo(client.player.getEntityPos()) <= 0.6)) {
 			return;
 		}
 
@@ -283,7 +283,7 @@ public abstract class GameRendererMixin
 			if(lastPlacedBlockPos != null && lastPlayerPlacedBlockPos != null) {
 				Axis axis = targetPlacement.getSide().getAxis();
 
-				facingAxisPlayerPos = client.player.getPos().getComponentAlongAxis(axis);
+				facingAxisPlayerPos = client.player.getEntityPos().getComponentAlongAxis(axis);
 				facingAxisPlayerLastPos = lastPlayerPlacedBlockPos.getComponentAlongAxis(axis);
 				facingAxisLastPlacedPos = new Vec3d(lastPlacedBlockPos.getX(), lastPlacedBlockPos.getY(), lastPlacedBlockPos.getZ()).getComponentAlongAxis(axis);
 
@@ -358,7 +358,7 @@ public abstract class GameRendererMixin
 							lastPlacedBlockPos = targetPlacement.getBlockPos();
 
 							if(lastPlayerPlacedBlockPos == null) {
-								lastPlayerPlacedBlockPos = client.player.getPos();
+								lastPlayerPlacedBlockPos = client.player.getEntityPos();
 							}
 							else {
 								// prevent slow rounding error from eventually moving the player out of range
@@ -366,11 +366,11 @@ public abstract class GameRendererMixin
 
 								Vec3d newLastPlayerPlacedPos = switch (targetPlacement.getSide().getAxis()) {
 									case X ->
-											new Vec3d(summedLastPlayerPos.x, client.player.getPos().y, client.player.getPos().z);
+											new Vec3d(summedLastPlayerPos.x, client.player.getEntityPos().y, client.player.getEntityPos().z);
 									case Y ->
-											new Vec3d(client.player.getPos().x, summedLastPlayerPos.y, client.player.getPos().z);
+											new Vec3d(client.player.getEntityPos().x, summedLastPlayerPos.y, client.player.getEntityPos().z);
 									case Z ->
-											new Vec3d(client.player.getPos().x, client.player.getPos().y, summedLastPlayerPos.z);
+											new Vec3d(client.player.getEntityPos().x, client.player.getEntityPos().y, summedLastPlayerPos.z);
 								};
 
 								lastPlayerPlacedBlockPos = newLastPlayerPlacedPos;
