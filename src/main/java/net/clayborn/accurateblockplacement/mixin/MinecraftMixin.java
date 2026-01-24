@@ -8,27 +8,27 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import net.clayborn.accurateblockplacement.AccurateBlockPlacementMod;
 import net.clayborn.accurateblockplacement.IMinecraftClientAccessor;
-import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.Minecraft;
 
-@Mixin(MinecraftClient.class)
-public abstract class MinecraftClientMixin implements IMinecraftClientAccessor
+@Mixin(Minecraft.class)
+public abstract class MinecraftMixin implements IMinecraftClientAccessor
 {
 	@Shadow
-	protected abstract void doItemUse();
+	protected abstract void startUseItem();
 
 	@Shadow
-	private int itemUseCooldown;
+	private int rightClickDelay;
 	
 	@Override
 	public void accurateblockplacement_DoItemUseBypassDisable()
 	{
 		Boolean oldValue = AccurateBlockPlacementMod.disableNormalItemUse;
 		AccurateBlockPlacementMod.disableNormalItemUse = false;
-		doItemUse();
+		startUseItem();
 		AccurateBlockPlacementMod.disableNormalItemUse = oldValue;
 	}
 	
-	@Inject(method = "doItemUse", at = @At("HEAD"), cancellable = true)
+	@Inject(method = "startUseItem", at = @At("HEAD"), cancellable = true)
 	void OnDoItemUse(CallbackInfo info)
 	{
 		if(AccurateBlockPlacementMod.disableNormalItemUse) {
@@ -39,12 +39,12 @@ public abstract class MinecraftClientMixin implements IMinecraftClientAccessor
 	@Override
 	public void accurateblockplacement_SetItemUseCooldown(int cooldown)
 	{
-		itemUseCooldown = cooldown;
+		rightClickDelay = cooldown;
 	}
 	
 	@Override
 	public int accurateblockplacement_GetItemUseCooldown()
 	{
-		return itemUseCooldown;
+		return rightClickDelay;
 	}
 }

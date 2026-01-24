@@ -4,10 +4,10 @@
   "package": "net.clayborn.accurateblockplacement.mixin",
   "compatibilityLevel": "JAVA_17",
   "client": [
-    "ClientPlayerInteractionManagerMixin",
+    "MultiPlayerGameModeMixin",
     "GameRendererMixin",
-    "KeyBindingMixin",
-    "MinecraftClientMixin"
+    "KeyMappingMixin",
+    "MinecraftMixin"
   ],
   "injectors": {
     "defaultRequire": 1
