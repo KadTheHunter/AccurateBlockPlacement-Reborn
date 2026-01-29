@@ -1,0 +1,16 @@
+{
+  "key.category.accurateblockplacement.category": "Accurate Block Placement",
+  "net.clayborn.accurateblockplacement.togglevanillaplacement": "Toggle Placement Mode",
+  "net.clayborn.accurateblockplacement.modplacementmodemessage": "§7Accurate Block Placement: §aEnabled",
+  "net.clayborn.accurateblockplacement.vanillaplacementmodemessage": "§7Accurate Block Placement: §cDisabled",
+  "net.clayborn.accurateblockplacement.togglefastbreaking": "Toggle Breaking Mode",
+  "net.clayborn.accurateblockplacement.fastbreakingenabled": "§7Fast Block Breaking: §aEnabled",
+  "net.clayborn.accurateblockplacement.fastbreakingdisabled": "§7Fast Block Breaking: §cDisabled",
+  "text.autoconfig.accurateblockplacement.title": "Accurate Block Placement",
+  "text.autoconfig.accurateblockplacement.option.accuratePlacementEnabled": "Accurate Block Placement enabled",
+  "text.autoconfig.accurateblockplacement.option.fastBreakingEnabled": "Fast Block Breaking enabled",
+  "text.autoconfig.accurateblockplacement.option.confirmation": "Confirmation on Toggle",
+  "text.autoconfig.accurateblockplacement.option.confirmationType": "Confirmation Type",
+  "text.autoconfig.accurateblockplacement.option.confirmationType.CHAT": "Chat",
+  "text.autoconfig.accurateblockplacement.option.confirmationType.HUD": "HUD"
+}
