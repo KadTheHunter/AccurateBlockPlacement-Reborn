@@ -3,6 +3,7 @@ package net.clayborn.accurateblockplacement.mixin;
 import net.clayborn.accurateblockplacement.AccurateBlockPlacementMod;
 import net.clayborn.accurateblockplacement.IKeyBindingAccessor;
 import net.clayborn.accurateblockplacement.IMinecraftClientAccessor;
+import net.clayborn.accurateblockplacement.config.AccurateBlockPlacementConfig;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.*;
 import net.minecraft.client.Minecraft;
@@ -54,6 +55,20 @@ public abstract class GameRendererMixin
 	InteractionHand handOfCurrentItemInUse;
 
 	@Unique
+	private static boolean isItemAllowed(Item item) {
+		return item instanceof BlockItem ||
+			(AccurateBlockPlacementConfig.toolsEnabled && 
+				(item instanceof ShovelItem ||
+					item instanceof HoeItem ||
+					item instanceof AxeItem ||
+					item instanceof FlintAndSteelItem)) ||
+			(AccurateBlockPlacementConfig.bucketEnabled && item instanceof BucketItem) ||
+			(AccurateBlockPlacementConfig.armorStandEnabled && item instanceof ArmorStandItem) ||
+			(AccurateBlockPlacementConfig.itemFrameEnabled && item instanceof ItemFrameItem) ||
+			(AccurateBlockPlacementConfig.spawnEggsEnabled && item instanceof SpawnEggItem);
+	}
+
+	@Unique
 	private Item getItemInUse(Minecraft client)
 	{
 		// have to check each hand
@@ -69,8 +84,7 @@ public abstract class GameRendererMixin
 				// hand is empty try the next one
 				continue;
 			}
-			// TODO: Convert the allowed items to a list
-			else if(itemInHand instanceof ItemStack && (itemInHand.getItem() instanceof BlockItem || itemInHand.getItem() instanceof ShovelItem || itemInHand.getItem() instanceof HoeItem || itemInHand.getItem() instanceof AxeItem || itemInHand.getItem() instanceof BucketItem)) {
+			else if(itemInHand instanceof ItemStack && isItemAllowed(itemInHand.getItem())) {
 				// found a block
 				// or found an item that can be placed, used or interacted with a block
 				handOfCurrentItemInUse = thisHand;
@@ -147,9 +161,12 @@ public abstract class GameRendererMixin
 	@Unique
 	private static boolean doesItemHaveOverriddenUseMethod(Item item)
 	{
-		// have to mark other Item types because they have vanilla usages that would get flagged, despite being usable in/by ABP:R
-		// TODO: Convert the allowed items to a list
-		if(itemUseMethodName == null || item instanceof ShovelItem || item instanceof HoeItem || item instanceof AxeItem || item instanceof BucketItem) {
+		/**
+		 * Have to mark other Item types via isItemAllowed(),
+		 * because they have vanilla usages that would get
+		 * flagged, despite being usable in ABP:R.
+		 */
+		if(itemUseMethodName == null || isItemAllowed(item)) {
 			return false;
 		}
 
@@ -225,9 +242,8 @@ public abstract class GameRendererMixin
 			return;
 		}
 
-		// if the item isn't a block, shovel, hoe or axe, let vanilla take over
-		// TODO: Convert the allowed items to a list
-		if(!(currentItem instanceof BlockItem || currentItem instanceof ShovelItem || currentItem instanceof HoeItem || currentItem instanceof AxeItem || currentItem instanceof BucketItem)) {
+		// if the item isn't allowed, let vanilla take over
+		if(!isItemAllowed(currentItem)) {
 			return;
 		}
 

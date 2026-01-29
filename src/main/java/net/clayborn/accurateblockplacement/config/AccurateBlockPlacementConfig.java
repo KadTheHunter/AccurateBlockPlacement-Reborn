@@ -28,6 +28,26 @@ public class AccurateBlockPlacementConfig {
     final public static boolean DEFAULT_CONFIRMATION_TYPE = true;
     public static boolean confirmationType;
 
+    private static final String TOOLS_ENABLED_KEY = "tools-enabled";
+    final public static boolean DEFAULT_TOOLS_ENABLED = true;
+    public static boolean toolsEnabled;
+
+    private static final String BUCKET_ENABLED_KEY = "bucket-enabled";
+    final public static boolean DEFAULT_BUCKET_ENABLED = true;
+    public static boolean bucketEnabled;
+
+    private static final String ARMOR_STAND_ENABLED_KEY = "armorstand-enabled";
+    final public static boolean DEFAULT_ARMOR_STAND_ENABLED = true;
+    public static boolean armorStandEnabled;
+
+    private static final String ITEM_FRAME_ENABLED_KEY = "itemframe-enabled";
+    final public static boolean DEFAULT_ITEM_FRAME_ENABLED = true;
+    public static boolean itemFrameEnabled;
+
+    private static final String SPAWN_EGGS_ENABLED_KEY = "spawneggs-enabled";
+    final public static boolean DEFAULT_SPAWN_EGGS_ENABLED = true;
+    public static boolean spawnEggsEnabled;
+
     public static void save() {
         File configFile = FabricLoader.getInstance().getConfigDir().resolve("accurateblockplacement.properties").toFile();
 
@@ -37,6 +57,11 @@ public class AccurateBlockPlacementConfig {
         properties.setProperty(BREAKING_KEY, Boolean.toString(isFastBlockBreakingEnabled));
         properties.setProperty(CONFIRMATION_KEY, String.valueOf(confirmation));
         properties.setProperty(CONFIRMATION_TYPE_KEY, String.valueOf(confirmationType));
+        properties.setProperty(TOOLS_ENABLED_KEY, String.valueOf(toolsEnabled));
+        properties.setProperty(BUCKET_ENABLED_KEY, String.valueOf(bucketEnabled));
+        properties.setProperty(ARMOR_STAND_ENABLED_KEY, String.valueOf(armorStandEnabled));
+        properties.setProperty(ITEM_FRAME_ENABLED_KEY, String.valueOf(itemFrameEnabled));
+        properties.setProperty(SPAWN_EGGS_ENABLED_KEY, String.valueOf(spawnEggsEnabled));
         properties.store(writer, null);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -52,6 +77,11 @@ public class AccurateBlockPlacementConfig {
                 properties.setProperty(BREAKING_KEY, Boolean.toString(DEFAULT_FAST_BREAKING_ENABLED));
                 properties.setProperty(CONFIRMATION_KEY, String.valueOf(DEFAULT_CONFIRMATION));
                 properties.setProperty(CONFIRMATION_TYPE_KEY, String.valueOf(DEFAULT_CONFIRMATION_TYPE));
+                properties.setProperty(TOOLS_ENABLED_KEY, String.valueOf(DEFAULT_TOOLS_ENABLED));
+                properties.setProperty(BUCKET_ENABLED_KEY, String.valueOf(DEFAULT_BUCKET_ENABLED));
+                properties.setProperty(ARMOR_STAND_ENABLED_KEY, String.valueOf(DEFAULT_ARMOR_STAND_ENABLED));
+                properties.setProperty(ITEM_FRAME_ENABLED_KEY, String.valueOf(DEFAULT_ITEM_FRAME_ENABLED));
+                properties.setProperty(SPAWN_EGGS_ENABLED_KEY, String.valueOf(DEFAULT_SPAWN_EGGS_ENABLED));
                 properties.store(writer, null);
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -65,6 +95,11 @@ public class AccurateBlockPlacementConfig {
             isFastBlockBreakingEnabled = Boolean.parseBoolean(properties.getProperty(BREAKING_KEY, String.valueOf(DEFAULT_FAST_BREAKING_ENABLED)));
             confirmation = Boolean.parseBoolean(properties.getProperty(CONFIRMATION_KEY, String.valueOf(DEFAULT_CONFIRMATION)));
             confirmationType = Boolean.parseBoolean(properties.getProperty(CONFIRMATION_TYPE_KEY, String.valueOf(DEFAULT_CONFIRMATION_TYPE)));
+            toolsEnabled = Boolean.parseBoolean(properties.getProperty(TOOLS_ENABLED_KEY, String.valueOf(DEFAULT_TOOLS_ENABLED)));
+            bucketEnabled = Boolean.parseBoolean(properties.getProperty(BUCKET_ENABLED_KEY, String.valueOf(DEFAULT_BUCKET_ENABLED)));
+            armorStandEnabled = Boolean.parseBoolean(properties.getProperty(ARMOR_STAND_ENABLED_KEY, String.valueOf(DEFAULT_ARMOR_STAND_ENABLED)));
+            itemFrameEnabled = Boolean.parseBoolean(properties.getProperty(ITEM_FRAME_ENABLED_KEY, String.valueOf(DEFAULT_ITEM_FRAME_ENABLED)));
+            spawnEggsEnabled = Boolean.parseBoolean(properties.getProperty(SPAWN_EGGS_ENABLED_KEY, String.valueOf(DEFAULT_SPAWN_EGGS_ENABLED)));
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (IllegalStateException e) {
