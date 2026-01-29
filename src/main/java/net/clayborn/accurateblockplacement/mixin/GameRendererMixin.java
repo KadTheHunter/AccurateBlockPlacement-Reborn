@@ -55,11 +55,13 @@ public abstract class GameRendererMixin
 
 	@Unique
 	private static boolean isItemAllowed(Item item) {
-		return item instanceof BlockItem || 
-			   item instanceof ShovelItem || 
-			   item instanceof HoeItem || 
-			   item instanceof AxeItem || 
-			   item instanceof BucketItem;
+		return item instanceof BlockItem ||
+				item instanceof ShovelItem ||
+				item instanceof HoeItem ||
+				item instanceof AxeItem ||
+				item instanceof BucketItem ||
+				item instanceof ArmorStandItem ||
+				item instanceof ItemFrameItem;
 	}
 
 	@Unique
