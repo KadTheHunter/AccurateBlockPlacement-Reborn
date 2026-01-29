@@ -1,10 +1,10 @@
-<div style="text-align: center;">
+<div align="center">
 
 # Accurate Block Placement: Reborn 
 
 </div>
 
-<div style="text-align: center;">
+<div align="center">
 
 [![Current Modrinth Release](https://img.shields.io/modrinth/v/kzwxhsjp?style=for-the-badge&logo=modrinth)](https://modrinth.com/mod/accurate-block-placement-reborn)
 [![Current CurseForge Release](https://img.shields.io/curseforge/v/886719?style=for-the-badge&logo=curseforge)](https://www.curseforge.com/minecraft/mc-mods/accurate-block-placement-reborn)
