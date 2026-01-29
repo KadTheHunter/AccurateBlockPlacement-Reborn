@@ -3,6 +3,7 @@ package net.clayborn.accurateblockplacement.mixin;
 import net.clayborn.accurateblockplacement.AccurateBlockPlacementMod;
 import net.clayborn.accurateblockplacement.IKeyBindingAccessor;
 import net.clayborn.accurateblockplacement.IMinecraftClientAccessor;
+import net.clayborn.accurateblockplacement.config.AccurateBlockPlacementConfig;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.*;
 import net.minecraft.client.Minecraft;
@@ -56,12 +57,15 @@ public abstract class GameRendererMixin
 	@Unique
 	private static boolean isItemAllowed(Item item) {
 		return item instanceof BlockItem ||
-				item instanceof ShovelItem ||
-				item instanceof HoeItem ||
-				item instanceof AxeItem ||
-				item instanceof BucketItem ||
-				item instanceof ArmorStandItem ||
-				item instanceof ItemFrameItem;
+			(AccurateBlockPlacementConfig.toolsEnabled && 
+				(item instanceof ShovelItem ||
+					item instanceof HoeItem ||
+					item instanceof AxeItem ||
+					item instanceof FlintAndSteelItem)) ||
+			(AccurateBlockPlacementConfig.bucketEnabled && item instanceof BucketItem) ||
+			(AccurateBlockPlacementConfig.armorStandEnabled && item instanceof ArmorStandItem) ||
+			(AccurateBlockPlacementConfig.itemFrameEnabled && item instanceof ItemFrameItem) ||
+			(AccurateBlockPlacementConfig.spawnEggsEnabled && item instanceof SpawnEggItem);
 	}
 
 	@Unique

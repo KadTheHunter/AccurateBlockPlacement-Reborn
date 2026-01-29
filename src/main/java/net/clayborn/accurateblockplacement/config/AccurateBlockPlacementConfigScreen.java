@@ -2,7 +2,6 @@ package net.clayborn.accurateblockplacement.config;
 
 import static net.clayborn.accurateblockplacement.AccurateBlockPlacementMod.*;
 
-import net.clayborn.accurateblockplacement.config.AccurateBlockPlacementConfig;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
@@ -52,6 +51,55 @@ public class AccurateBlockPlacementConfigScreen {
                         !AccurateBlockPlacementConfig.confirmationType ? ConfirmTypeLabel.CHAT : ConfirmTypeLabel.HUD)
                 .setDefaultValue(ConfirmTypeLabel.HUD)
                 .setSaveConsumer((replace) -> AccurateBlockPlacementConfig.confirmationType = replace == ConfirmTypeLabel.HUD)
+                .build());
+        
+        // Item Groups Section
+        general.addEntry(entryBuilder
+                .startTextDescription(Component.translatable("text.autoconfig.accurateblockplacement.section.itemGroups"))
+                .build());
+        // Accurate tools
+        general.addEntry(entryBuilder
+                .startBooleanToggle(
+                        Component.translatable("text.autoconfig.accurateblockplacement.option.toolsEnabled"),
+                        AccurateBlockPlacementConfig.toolsEnabled)
+                .setDefaultValue(AccurateBlockPlacementConfig.DEFAULT_TOOLS_ENABLED)
+                .setSaveConsumer((replace) -> AccurateBlockPlacementConfig.toolsEnabled = replace)
+                .setTooltip(Component.translatable("text.autoconfig.accurateblockplacement.option.toolsEnabled.tooltip"))
+                .build());
+        // Accurate buckets
+        general.addEntry(entryBuilder
+                .startBooleanToggle(
+                        Component.translatable("text.autoconfig.accurateblockplacement.option.bucketEnabled"),
+                        AccurateBlockPlacementConfig.bucketEnabled)
+                .setDefaultValue(AccurateBlockPlacementConfig.DEFAULT_BUCKET_ENABLED)
+                .setSaveConsumer((replace) -> AccurateBlockPlacementConfig.bucketEnabled = replace)
+                .setTooltip(Component.translatable("text.autoconfig.accurateblockplacement.option.bucketEnabled.tooltip"))
+                .build());
+        // Accurate armor stands
+        general.addEntry(entryBuilder
+                .startBooleanToggle(
+                        Component.translatable("text.autoconfig.accurateblockplacement.option.armorStandEnabled"),
+                        AccurateBlockPlacementConfig.armorStandEnabled)
+                .setDefaultValue(AccurateBlockPlacementConfig.DEFAULT_ARMOR_STAND_ENABLED)
+                .setSaveConsumer((replace) -> AccurateBlockPlacementConfig.armorStandEnabled = replace)
+                .setTooltip(Component.translatable("text.autoconfig.accurateblockplacement.option.armorStandEnabled.tooltip"))
+                .build());
+        // Accurate item frames
+        general.addEntry(entryBuilder
+                .startBooleanToggle(
+                        Component.translatable("text.autoconfig.accurateblockplacement.option.itemFrameEnabled"),
+                        AccurateBlockPlacementConfig.itemFrameEnabled)
+                .setDefaultValue(AccurateBlockPlacementConfig.DEFAULT_ITEM_FRAME_ENABLED)
+                .setSaveConsumer((replace) -> AccurateBlockPlacementConfig.itemFrameEnabled = replace)
+                .setTooltip(Component.translatable("text.autoconfig.accurateblockplacement.option.itemFrameEnabled.tooltip"))
+                .build());
+        general.addEntry(entryBuilder
+                .startBooleanToggle(
+                        Component.translatable("text.autoconfig.accurateblockplacement.option.spawnEggsEnabled"),
+                        AccurateBlockPlacementConfig.spawnEggsEnabled)
+                .setDefaultValue(AccurateBlockPlacementConfig.DEFAULT_SPAWN_EGGS_ENABLED)
+                .setSaveConsumer((replace) -> AccurateBlockPlacementConfig.spawnEggsEnabled = replace)
+                .setTooltip(Component.translatable("text.autoconfig.accurateblockplacement.option.spawnEggsEnabled.tooltip"))
                 .build());
         return builder.build();
     }
