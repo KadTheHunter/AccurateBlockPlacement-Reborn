@@ -1,27 +1,21 @@
-<h1 align="center">Accurate Block Placement: Reborn</h1>
+<div style="text-align: center;">
 
-<p align="center">
-<a href="https://modrinth.com/mod/accurate-block-placement-reborn">
-<img alt="Current Modrinth Release" src="https://img.shields.io/modrinth/v/kzwxhsjp?style=for-the-badge&logo=modrinth"/>
-</a>
-<a href="https://www.curseforge.com/minecraft/mc-mods/accurate-block-placement-reborn">
-<img alt="Current CurseForge Release" src="https://img.shields.io/curseforge/v/886719?style=for-the-badge&logo=curseforge"/>
-</a>
-<a href="https://github.com/KadTheHunter/AccurateBlockPlacement-Reborn/releases">
-<img alt="Current GitHub Release" src="https://img.shields.io/github/v/release/KadTheHunter/AccurateBlockPlacement-Reborn?label=VERSION&style=for-the-badge&logo=github"/>
-</a>
-<br/><br/>
-<a>
-<img alt="Modrinth Downloads" src="https://img.shields.io/modrinth/dt/kzwxhsjp?style=for-the-badge&logo=modrinth"/>
-</a>
-<a>
-<img alt="CurseForge Downloads" src="https://img.shields.io/curseforge/dt/886719?style=for-the-badge&logo=curseforge"/>
-</a>
-<br/><br/>
-<a href="https://buymeacoffee.com/kaddicus" target="_blank">
-<img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="31" width="164">
-</a>
-</p>
+# Accurate Block Placement: Reborn 
+
+</div>
+
+<div style="text-align: center;">
+
+[![Current Modrinth Release](https://img.shields.io/modrinth/v/kzwxhsjp?style=for-the-badge&logo=modrinth)](https://modrinth.com/mod/accurate-block-placement-reborn)
+[![Current CurseForge Release](https://img.shields.io/curseforge/v/886719?style=for-the-badge&logo=curseforge)](https://www.curseforge.com/minecraft/mc-mods/accurate-block-placement-reborn)
+[![Current GitHub Release](https://img.shields.io/github/v/release/KadTheHunter/AccurateBlockPlacement-Reborn?label=VERSION&style=for-the-badge&logo=github)](https://github.com/KadTheHunter/AccurateBlockPlacement-Reborn/releases)
+
+![Modrinth Downloads](https://img.shields.io/modrinth/dt/kzwxhsjp?style=for-the-badge&logo=modrinth)
+![CurseForge Downloads](https://img.shields.io/curseforge/dt/886719?style=for-the-badge&logo=curseforge)
+
+[![Crowdin](https://badges.crowdin.net/accurate-block-placement-reborn/localized.svg)](https://crowdin.com/project/accurate-block-placement-reborn)
+
+</div>
 
 AccurateBlockPlacement: Reborn is a client-side mod for [Fabric](https://fabricmc.net).
 
