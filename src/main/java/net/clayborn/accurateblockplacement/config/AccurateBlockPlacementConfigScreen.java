@@ -49,6 +49,7 @@ public class AccurateBlockPlacementConfigScreen {
                 .startEnumSelector(Component.translatable("text.autoconfig.accurateblockplacement.option.confirmationType"),
                         ConfirmTypeLabel.class,
                         !AccurateBlockPlacementConfig.confirmationType ? ConfirmTypeLabel.CHAT : ConfirmTypeLabel.HUD)
+                .setEnumNameProvider(enumValue -> Component.translatable("text.autoconfig.accurateblockplacement.option.confirmationType." + enumValue.name()))
                 .setDefaultValue(ConfirmTypeLabel.HUD)
                 .setSaveConsumer((replace) -> AccurateBlockPlacementConfig.confirmationType = replace == ConfirmTypeLabel.HUD)
                 .build());
