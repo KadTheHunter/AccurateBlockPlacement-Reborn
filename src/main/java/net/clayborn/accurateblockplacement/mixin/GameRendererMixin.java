@@ -179,7 +179,7 @@ public abstract class GameRendererMixin
 		}
 	}
 
-	@Inject(method = "pick", at = @At("RETURN"))
+	@Inject(method = "update", at = @At("RETURN"))
 	private void onUpdateTargetedEntityComplete(CallbackInfo info)
 	{
 		if(!AccurateBlockPlacementMod.isAccurateBlockPlacementEnabled) {

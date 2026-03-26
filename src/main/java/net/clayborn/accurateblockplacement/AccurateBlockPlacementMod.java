@@ -6,7 +6,7 @@ import org.lwjgl.glfw.GLFW;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.KeyMapping;
@@ -33,23 +33,39 @@ public class AccurateBlockPlacementMod implements ClientModInitializer
 
 		Category keybindCategory = KeyMapping.Category.register(Identifier.fromNamespaceAndPath("accurateblockplacement", "category"));
 
-		KeyMapping place_keybind = KeyBindingHelper.registerKeyBinding(new KeyMapping("net.clayborn.accurateblockplacement.togglevanillaplacement", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, keybindCategory));
+		KeyMapping place_keybind = KeyMappingHelper.registerKeyMapping(new KeyMapping("net.clayborn.accurateblockplacement.togglevanillaplacement", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, keybindCategory));
 
-		KeyMapping break_keybind = KeyBindingHelper.registerKeyBinding(new KeyMapping("net.clayborn.accurateblockplacement.togglefastbreaking", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, keybindCategory));
+		KeyMapping break_keybind = KeyMappingHelper.registerKeyMapping(new KeyMapping("net.clayborn.accurateblockplacement.togglefastbreaking", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, keybindCategory));
 		
 		ClientTickEvents.END_CLIENT_TICK.register(e -> {
 			while(place_keybind.consumeClick()) {
 				isAccurateBlockPlacementEnabled = !isAccurateBlockPlacementEnabled;
 				AccurateBlockPlacementConfig.save();
 				if (MC.player != null && AccurateBlockPlacementConfig.confirmation) {
-				MC.player.displayClientMessage(isAccurateBlockPlacementEnabled ? Component.translatable("net.clayborn.accurateblockplacement.modplacementmodemessage") : Component.translatable("net.clayborn.accurateblockplacement.vanillaplacementmodemessage"), AccurateBlockPlacementConfig.confirmationType);
+					Component message = isAccurateBlockPlacementEnabled
+							? Component.translatable("net.clayborn.accurateblockplacement.modplacementmodemessage")
+							: Component.translatable("net.clayborn.accurateblockplacement.vanillaplacementmodemessage");
+
+					if (AccurateBlockPlacementConfig.confirmationType) {
+						MC.player.sendOverlayMessage(message);
+					} else {
+						MC.player.sendSystemMessage(message);
+					}
 				}
 			}
 			while(break_keybind.consumeClick()) {
 				isFastBlockBreakingEnabled = !isFastBlockBreakingEnabled;
 				AccurateBlockPlacementConfig.save();
 				if (MC.player != null && AccurateBlockPlacementConfig.confirmation) {
-					MC.player.displayClientMessage(isFastBlockBreakingEnabled ? Component.translatable("net.clayborn.accurateblockplacement.fastbreakingenabled") : Component.translatable("net.clayborn.accurateblockplacement.fastbreakingdisabled"), AccurateBlockPlacementConfig.confirmationType);
+					Component message = isFastBlockBreakingEnabled
+							? Component.translatable("net.clayborn.accurateblockplacement.fastbreakingenabled")
+							: Component.translatable("net.clayborn.accurateblockplacement.fastbreakingdisabled");
+
+					if (AccurateBlockPlacementConfig.confirmationType) {
+						MC.player.sendOverlayMessage(message);
+					} else {
+						MC.player.sendSystemMessage(message);
+					}
 				}
 			}
 		});
