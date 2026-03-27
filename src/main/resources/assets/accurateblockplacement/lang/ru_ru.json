@@ -15,7 +15,7 @@
   "text.autoconfig.accurateblockplacement.option.confirmationType.HUD": "HUD",
   "text.autoconfig.accurateblockplacement.section.itemGroups": "Аккуратное размещение или использование других предметов:",
   "text.autoconfig.accurateblockplacement.option.toolsEnabled": "Инструменты",
-  "text.autoconfig.accurateblockplacement.option.toolsEnabled.tooltip": "Использовать иструменты аккуратно?",
+  "text.autoconfig.accurateblockplacement.option.toolsEnabled.tooltip": "Использовать инструменты аккуратно?",
   "text.autoconfig.accurateblockplacement.option.bucketEnabled": "Вёдра",
   "text.autoconfig.accurateblockplacement.option.bucketEnabled.tooltip": "Размещать вёдра аккуратно?",
   "text.autoconfig.accurateblockplacement.option.armorStandEnabled": "Стойки для брони",
