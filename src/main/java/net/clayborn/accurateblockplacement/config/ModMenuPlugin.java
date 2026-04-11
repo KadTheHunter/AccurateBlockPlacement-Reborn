@@ -2,8 +2,8 @@ package net.clayborn.accurateblockplacement.config;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
+import com.terraformersmc.modmenu.util.NullScreenFactory;
 
-import net.clayborn.accurateblockplacement.config.AccurateBlockPlacementConfigScreen;
 import net.fabricmc.loader.api.FabricLoader;
 
 public class ModMenuPlugin implements ModMenuApi {
@@ -12,7 +12,7 @@ public class ModMenuPlugin implements ModMenuApi {
         if (FabricLoader.getInstance().isModLoaded("cloth-config")) {
             return AccurateBlockPlacementConfigScreen::createConfigScreen;
         } else {
-            return null;
+            return new NullScreenFactory<>();
         }
     }
 }
