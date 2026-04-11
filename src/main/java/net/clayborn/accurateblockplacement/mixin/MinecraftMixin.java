@@ -83,7 +83,7 @@ public abstract class MinecraftMixin implements IMinecraftClientAccessor {
 	@Unique
 	private Vec3 lastFreshPressMouseRatio = null;
 	@Unique
-	private ArrayList<HitResult> backFillList = new ArrayList<>();
+	private final ArrayList<HitResult> backFillList = new ArrayList<>();
 
 	@Unique
 	InteractionHand handOfCurrentItemInUse;
