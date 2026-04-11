@@ -227,7 +227,7 @@ public abstract class MinecraftMixin implements IMinecraftClientAccessor {
 		Minecraft client = Minecraft.getInstance();
 
 		// safety checks
-		if(client == null || client.options == null || client.options.keyUse == null || client.hitResult == null || client.player == null || client.level == null || client.mouseHandler == null || client.getWindow() == null) {
+		if(client.hitResult == null || client.player == null || client.level == null) {
 			return;
 		}
 
