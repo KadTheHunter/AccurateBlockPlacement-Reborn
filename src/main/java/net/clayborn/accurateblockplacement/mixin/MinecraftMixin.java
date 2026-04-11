@@ -309,9 +309,8 @@ public abstract class MinecraftMixin implements IMinecraftClientAccessor
 			return;
 		}
 
-		// if the target block is a BlockWithEntity (i.e. storage container) and we are actively placing a line of blocks, prevent interaction
-		// TODO: Investigate the secondary check, it doesn't seem to be working as intended
-		if((targetBlock instanceof BaseEntityBlock) && (lastPlayerPlacedBlockPos != null && lastPlayerPlacedBlockPos.distanceTo(client.player.position()) <= 0.6)) {
+		// if the target block is a BaseEntityBlock (i.e. storage container) or BedBlock and we are actively placing blocks, prevent interaction
+		if ((targetBlock instanceof BaseEntityBlock || targetBlock instanceof BedBlock) && !freshKeyPress && client.options.keyUse.isDown()) {
 			return;
 		}
 
