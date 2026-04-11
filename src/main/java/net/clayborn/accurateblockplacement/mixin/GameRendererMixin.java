@@ -380,7 +380,7 @@ public abstract class GameRendererMixin
 								// prevent slow rounding error from eventually moving the player out of range
 								Vec3 summedLastPlayerPos = lastPlayerPlacedBlockPos.add(new Vec3(targetPlacement.getClickedFace().getUnitVec3i().getX(), targetPlacement.getClickedFace().getUnitVec3i().getY(), targetPlacement.getClickedFace().getUnitVec3i().getZ()));
 
-								Vec3 newLastPlayerPlacedPos = switch (targetPlacement.getClickedFace().getAxis()) {
+								lastPlayerPlacedBlockPos = switch (targetPlacement.getClickedFace().getAxis()) {
 									case X ->
 											new Vec3(summedLastPlayerPos.x, client.player.position().y, client.player.position().z);
 									case Y ->
@@ -388,8 +388,6 @@ public abstract class GameRendererMixin
 									case Z ->
 											new Vec3(client.player.position().x, client.player.position().y, summedLastPlayerPos.z);
 								};
-
-								lastPlayerPlacedBlockPos = newLastPlayerPlacedPos;
 							}
 						}
 
