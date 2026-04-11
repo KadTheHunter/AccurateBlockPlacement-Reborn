@@ -30,8 +30,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 @Mixin(Minecraft.class)
-public abstract class MinecraftMixin implements IMinecraftClientAccessor
-{
+public abstract class MinecraftMixin implements IMinecraftClientAccessor {
 	@Shadow
 	protected abstract void startUseItem();
 
@@ -39,8 +38,7 @@ public abstract class MinecraftMixin implements IMinecraftClientAccessor
 	private int rightClickDelay;
 	
 	@Override
-	public void accurateblockplacement_DoItemUseBypassDisable()
-	{
+	public void accurateblockplacement_DoItemUseBypassDisable() {
 		Boolean oldValue = AccurateBlockPlacementMod.disableNormalItemUse;
 		AccurateBlockPlacementMod.disableNormalItemUse = false;
 		startUseItem();
@@ -48,22 +46,19 @@ public abstract class MinecraftMixin implements IMinecraftClientAccessor
 	}
 	
 	@Inject(method = "startUseItem", at = @At("HEAD"), cancellable = true)
-	void OnDoItemUse(CallbackInfo info)
-	{
+	void OnDoItemUse(CallbackInfo info) {
 		if(AccurateBlockPlacementMod.disableNormalItemUse) {
 			info.cancel();
 		}
 	}
 	
 	@Override
-	public void accurateblockplacement_SetItemUseCooldown(int cooldown)
-	{
+	public void accurateblockplacement_SetItemUseCooldown(int cooldown) {
 		rightClickDelay = cooldown;
 	}
 	
 	@Override
-	public int accurateblockplacement_GetItemUseCooldown()
-	{
+	public int accurateblockplacement_GetItemUseCooldown() {
 		return rightClickDelay;
 	}
 
