@@ -106,24 +106,22 @@ public abstract class MinecraftMixin implements IMinecraftClientAccessor {
 	private Item getItemInUse(Minecraft client) {
 		// have to check each hand
 		InteractionHand[] hands = InteractionHand.values();
-		int numHands = hands.length;
 
-		for(int i = 0; i < numHands; ++i) {
-			InteractionHand thisHand = hands[i];
-			assert client.player!= null;
-			ItemStack itemInHand = client.player.getItemInHand(thisHand);
+        for (InteractionHand thisHand : hands) {
+            assert client.player != null;
+            ItemStack itemInHand = client.player.getItemInHand(thisHand);
 
-			if(itemInHand.isEmpty()) {
+            if (itemInHand.isEmpty()) {
 				// hand is empty try the next one
 				continue;
 			}
-			else if(itemInHand instanceof ItemStack && isItemAllowed(itemInHand.getItem())) {
-				// found a block
-				// or found an item that can be placed, used or interacted with a block
-				handOfCurrentItemInUse = thisHand;
-				return itemInHand.getItem();
-			}
-		}
+            if (itemInHand instanceof ItemStack && isItemAllowed(itemInHand.getItem())) {
+                // found a block
+                // or found an item that can be placed, used or interacted with a block
+                handOfCurrentItemInUse = thisHand;
+                return itemInHand.getItem();
+            }
+        }
 
 		return null;
 	}
