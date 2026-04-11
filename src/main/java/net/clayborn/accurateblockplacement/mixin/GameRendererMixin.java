@@ -65,8 +65,7 @@ public abstract class GameRendererMixin
 	}
 
 	@Unique
-	private Item getItemInUse(Minecraft client)
-	{
+	private Item getItemInUse(Minecraft client) {
 		// have to check each hand
 		InteractionHand[] hands = InteractionHand.values();
 		int numHands = hands.length;
@@ -92,8 +91,7 @@ public abstract class GameRendererMixin
 	}
 
 	@Unique
-	private static String getBlockActivateMethodName()
-	{
+	private static String getBlockActivateMethodName() {
 		Method[] methods = Block.class.getMethods();
 
 		for(Method method : methods) {
@@ -126,8 +124,7 @@ public abstract class GameRendererMixin
 	}
 
 	@Unique
-	private static String getItemUseMethodName()
-	{
+	private static String getItemUseMethodName() {
 		try {
 			Method useMethod = Item.class.getDeclaredMethod("use", Level.class, Player.class, InteractionHand.class);
 			return useMethod.getName();
@@ -138,8 +135,7 @@ public abstract class GameRendererMixin
 	}
 
 	@Unique
-	private static boolean doesBlockHaveOverriddenActivateMethod(Block block)
-	{
+	private static boolean doesBlockHaveOverriddenActivateMethod(Block block) {
 		if(blockActivateMethodName == null) {
 			return false;
 		}
