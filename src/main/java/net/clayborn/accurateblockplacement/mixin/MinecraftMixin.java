@@ -1,7 +1,6 @@
 package net.clayborn.accurateblockplacement.mixin;
 
-import net.clayborn.accurateblockplacement.IKeyBindingAccessor;
-import net.clayborn.accurateblockplacement.config.AccurateBlockPlacementConfig;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -15,6 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -24,7 +24,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import net.clayborn.accurateblockplacement.AccurateBlockPlacementMod;
 import net.clayborn.accurateblockplacement.IMinecraftClientAccessor;
-import net.minecraft.client.Minecraft;
+import net.clayborn.accurateblockplacement.IKeyBindingAccessor;
+import net.clayborn.accurateblockplacement.config.AccurateBlockPlacementConfig;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
