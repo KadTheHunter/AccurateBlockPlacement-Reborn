@@ -67,24 +67,22 @@ public abstract class GameRendererMixin {
 	private Item getItemInUse(MinecraftClient client) {
 		// have to check each hand
 		Hand[] hands = Hand.values();
-		int numHands = hands.length;
 
-		for(int i = 0; i < numHands; ++i) {
-			Hand thisHand = hands[i];
-			assert client.player!= null;
-			ItemStack itemInHand = client.player.getStackInHand(thisHand);
+        for (Hand thisHand : hands) {
+            assert client.player != null;
+            ItemStack itemInHand = client.player.getStackInHand(thisHand);
 
-			if(itemInHand.isEmpty()) {
+            if (itemInHand.isEmpty()) {
 				// hand is empty try the next one
 				continue;
 			}
-			else if(itemInHand instanceof ItemStack && (itemInHand.getItem() instanceof BlockItem || itemInHand.getItem() instanceof ShovelItem || itemInHand.getItem() instanceof HoeItem || itemInHand.getItem() instanceof AxeItem)) {
-				// found a block
-				// or found an item that can be placed, used or interacted with a block
-				handOfCurrentItemInUse = thisHand;
-				return itemInHand.getItem();
-			}
-		}
+            if (itemInHand instanceof ItemStack && isItemAllowed(itemInHand.getItem())) {
+                // found a block
+                // or found an item that can be placed, used or interacted with a block
+                handOfCurrentItemInUse = thisHand;
+                return itemInHand.getItem();
+            }
+        }
 
 		return null;
 	}
