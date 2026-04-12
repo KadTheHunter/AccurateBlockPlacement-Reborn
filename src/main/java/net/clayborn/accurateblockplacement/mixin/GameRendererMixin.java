@@ -264,6 +264,11 @@ public abstract class GameRendererMixin {
 			return;
 		}
 		
+		// if the target block is a composter and the held item is compostable, let vanilla take over
+		if((targetBlock instanceof ComposterBlock) && (ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.containsKey(currentItem))) {
+			return;
+		}
+
 		// are they holding the use key and is the item to use a block?
 		// also is the SAME item we started with if we are in repeat mode?
 		// note: check both freshKey and current state in cause of shitty frame rates
