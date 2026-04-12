@@ -1,5 +1,7 @@
 package net.clayborn.accurateblockplacement;
 
+import net.clayborn.accurateblockplacement.config.AccurateBlockPlacementConfig;
+
 import org.lwjgl.glfw.GLFW;
 
 import net.fabricmc.api.ClientModInitializer;
@@ -19,6 +21,8 @@ public class AccurateBlockPlacementMod implements ClientModInitializer {
 	
 	@Override
 	public void onInitializeClient() {
+		AccurateBlockPlacementConfig.load();
+
 		MC = MinecraftClient.getInstance();
 
 		KeyBinding keybind = KeyBindingHelper.registerKeyBinding(new KeyBinding("net.clayborn.accurateblockplacement.togglevanillaplacement", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "Accurate Block Placement"));
