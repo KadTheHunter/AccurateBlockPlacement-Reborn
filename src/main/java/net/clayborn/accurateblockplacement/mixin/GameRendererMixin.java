@@ -3,6 +3,7 @@ package net.clayborn.accurateblockplacement.mixin;
 import net.clayborn.accurateblockplacement.AccurateBlockPlacementMod;
 import net.clayborn.accurateblockplacement.IKeyBindingAccessor;
 import net.clayborn.accurateblockplacement.IMinecraftClientAccessor;
+import net.clayborn.accurateblockplacement.config.AccurateBlockPlacementConfig;
 
 import net.minecraft.block.*;
 import net.minecraft.client.MinecraftClient;
@@ -49,8 +50,19 @@ public abstract class GameRendererMixin {
 	Hand handOfCurrentItemInUse;
 
 	@Unique
-	private Item getItemInUse(MinecraftClient client)
-	{
+	private static boolean isItemAllowed(Item item) {
+		return item instanceof BlockItem ||
+				(AccurateBlockPlacementConfig.toolsEnabled &&
+						(item instanceof ShovelItem ||
+								item instanceof HoeItem ||
+								item instanceof AxeItem ||
+								item instanceof FlintAndSteelItem)) ||
+				(AccurateBlockPlacementConfig.bucketEnabled && item instanceof BucketItem) ||
+				(AccurateBlockPlacementConfig.armorStandEnabled && item instanceof ArmorStandItem) ||
+				(AccurateBlockPlacementConfig.itemFrameEnabled && item instanceof ItemFrameItem) ||
+				(AccurateBlockPlacementConfig.spawnEggsEnabled && item instanceof SpawnEggItem);
+	}
+
 		// have to check each hand
 		Hand[] hands = Hand.values();
 		int numHands = hands.length;
@@ -134,9 +146,13 @@ public abstract class GameRendererMixin {
 	}
 
 	@Unique
-	private static boolean doesItemHaveOverriddenUseMethod(Item item)
-	{
-		if(itemUseMethodName == null) {
+	private static boolean doesItemHaveOverriddenUseMethod(Item item) {
+		/*
+		 * Have to mark other Item types via isItemAllowed(),
+		 * because they have vanilla usages that would get
+		 * flagged, despite being usable in ABP:R.
+		 */
+		if(itemUseMethodName == null || isItemAllowed(item)) {
 			return false;
 		}
 
@@ -206,8 +222,8 @@ public abstract class GameRendererMixin {
 			return;
 		}
 
-		// if the item isn't a block or a mining tool (axe, hoe, pickaxe, shovel), let vanilla take over
-		if(!(currentItem instanceof BlockItem) && !(currentItem instanceof MiningToolItem)) {
+		// if the item isn't allowed, let vanilla take over
+		if(!isItemAllowed(currentItem)) {
 			return;
 		}
 
