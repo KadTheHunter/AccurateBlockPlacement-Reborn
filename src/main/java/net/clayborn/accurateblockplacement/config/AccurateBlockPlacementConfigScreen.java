@@ -2,7 +2,6 @@ package net.clayborn.accurateblockplacement.config;
 
 import static net.clayborn.accurateblockplacement.AccurateBlockPlacementMod.*;
 
-import net.clayborn.accurateblockplacement.config.AccurateBlockPlacementConfig;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
