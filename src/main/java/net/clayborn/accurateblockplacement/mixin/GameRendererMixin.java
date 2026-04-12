@@ -4,6 +4,7 @@ import net.clayborn.accurateblockplacement.AccurateBlockPlacementMod;
 import net.clayborn.accurateblockplacement.IKeyBindingAccessor;
 import net.clayborn.accurateblockplacement.IMinecraftClientAccessor;
 import net.clayborn.accurateblockplacement.config.AccurateBlockPlacementConfig;
+
 import net.minecraft.block.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.GameRenderer;
@@ -17,6 +18,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction.Axis;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -27,8 +29,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 @Mixin(GameRenderer.class)
-public abstract class GameRendererMixin
-{
+public abstract class GameRendererMixin {
 	@Unique
 	private static final String blockActivateMethodName = getBlockActivateMethodName();
 	@Unique
@@ -92,8 +93,7 @@ public abstract class GameRendererMixin
 	}
 
 	@Unique
-	private static String getBlockActivateMethodName()
-	{
+	private static String getBlockActivateMethodName() {
 		Method[] methods = Block.class.getMethods();
 
 		for(Method method : methods) {
@@ -126,8 +126,7 @@ public abstract class GameRendererMixin
 	}
 
 	@Unique
-	private static String getItemUseMethodName()
-	{
+	private static String getItemUseMethodName() {
 		try {
 			Method useMethod = Item.class.getDeclaredMethod("use", World.class, PlayerEntity.class, Hand.class);
 			return useMethod.getName();
@@ -138,8 +137,7 @@ public abstract class GameRendererMixin
 	}
 
 	@Unique
-	private static boolean doesBlockHaveOverriddenActivateMethod(Block block)
-	{
+	private static boolean doesBlockHaveOverriddenActivateMethod(Block block) {
 		if(blockActivateMethodName == null) {
 			return false;
 		}
@@ -175,8 +173,7 @@ public abstract class GameRendererMixin
 	}
 
 	@Inject(method = "updateCrosshairTarget", at = @At("RETURN"))
-	private void onUpdateTargetedEntityComplete(CallbackInfo info)
-	{
+	private void onUpdateTargetedEntityComplete(CallbackInfo info) {
 		if(!AccurateBlockPlacementMod.isAccurateBlockPlacementEnabled) {
 			// reset all state just in case
 			AccurateBlockPlacementMod.disableNormalItemUse = false;
