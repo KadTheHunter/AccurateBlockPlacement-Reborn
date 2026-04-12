@@ -164,8 +164,6 @@ public abstract class GameRendererMixin {
 
 			lastFreshPressMouseRatio = null;
 
-			lastItemInUse = null;
-
 			return;
 		}
 
@@ -201,9 +199,6 @@ public abstract class GameRendererMixin {
 			else {
 				lastFreshPressMouseRatio = null;
 			}
-
-			// a fresh keypress is required each time the item being used changes
-			lastItemInUse = currentItem;
 		}
 
 		// if nothing in hand, let vanilla take over
@@ -297,13 +292,11 @@ public abstract class GameRendererMixin {
 
 			boolean isOnCooldown = autoRepeatWaitingOnCooldown && clientAccessor.accurateblockplacement_GetItemUseCooldown() > 0 && !hasMouseMoved;
 
-			// if [ we are still holding the same block we start pressing 'use' with] AND
-			// [ [ this is a fresh keypress ] OR
+			// if [ [ this is a fresh keypress ] OR
 			// [ [ we have a fresh place to put a block ] AND
 			// [ auto-repeat isn't on cooldown OR the mouse has moved enough ] ]
 			// we can try to place a block
 			// note: this is always true on a fresh keypress
-			if(lastItemInUse == currentItem) {
 				if(freshKeyPress || (isPlacementTargetFresh && !isOnCooldown)) {
 					// update if we are repeating
 					if(autoRepeatWaitingOnCooldown && !freshKeyPress) {
@@ -365,7 +358,6 @@ public abstract class GameRendererMixin {
 					// populate the backfill list just in case
 					backFillList.add(client.crosshairTarget);
 				}
-			}
 
 			// update the last block we looked at
 			lastSeenBlockPos = blockHitResult.getBlockPos();
