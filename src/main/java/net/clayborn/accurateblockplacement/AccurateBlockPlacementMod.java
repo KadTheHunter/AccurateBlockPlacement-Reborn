@@ -11,16 +11,14 @@ import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 
-public class AccurateBlockPlacementMod implements ClientModInitializer
-{
+public class AccurateBlockPlacementMod implements ClientModInitializer {
 	public static Boolean disableNormalItemUse = false;
 	public static boolean isAccurateBlockPlacementEnabled = true;
 
 	public static MinecraftClient MC;
 	
 	@Override
-	public void onInitializeClient()
-	{
+	public void onInitializeClient() {
 		MC = MinecraftClient.getInstance();
 
 		KeyBinding keybind = KeyBindingHelper.registerKeyBinding(new KeyBinding("net.clayborn.accurateblockplacement.togglevanillaplacement", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "Accurate Block Placement"));
