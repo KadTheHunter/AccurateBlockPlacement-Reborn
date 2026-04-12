@@ -216,7 +216,7 @@ public abstract class GameRendererMixin {
 			return;
 		}
 
-		// if we aren't looking at a block (so we can place), let vanilla take over
+		// if we aren't looking at a block, let vanilla take over
 		if(client.crosshairTarget.getType() != HitResult.Type.BLOCK) {
 			return;
 		}
