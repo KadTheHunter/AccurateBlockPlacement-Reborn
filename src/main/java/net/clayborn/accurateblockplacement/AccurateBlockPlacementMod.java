@@ -15,7 +15,9 @@ import net.minecraft.text.Text;
 
 public class AccurateBlockPlacementMod implements ClientModInitializer {
 	public static Boolean disableNormalItemUse = false;
-	public static boolean isAccurateBlockPlacementEnabled = true;
+
+	public static boolean isAccurateBlockPlacementEnabled;
+	public static boolean isFastBlockBreakingEnabled;
 
 	public static MinecraftClient MC;
 	
@@ -25,13 +27,26 @@ public class AccurateBlockPlacementMod implements ClientModInitializer {
 
 		MC = MinecraftClient.getInstance();
 
-		KeyBinding keybind = KeyBindingHelper.registerKeyBinding(new KeyBinding("net.clayborn.accurateblockplacement.togglevanillaplacement", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "Accurate Block Placement"));
-		
+		KeyBinding place_keybind = KeyBindingHelper.registerKeyBinding(new KeyBinding("net.clayborn.accurateblockplacement.togglevanillaplacement", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "Accurate Block Placement"));
+
+		KeyBinding break_keybind = KeyBindingHelper.registerKeyBinding(new KeyBinding("net.clayborn.accurateblockplacement.togglefastbreaking", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "Fast Block Breaking"));
+
 		ClientTickEvents.END_CLIENT_TICK.register(e -> {
-			while(keybind.wasPressed()) {
+			while(place_keybind.wasPressed()) {
 				isAccurateBlockPlacementEnabled = !isAccurateBlockPlacementEnabled;
-				
-				MC.inGameHud.getChatHud().addMessage(isAccurateBlockPlacementEnabled ? Text.translatable("net.clayborn.accurateblockplacement.modplacementmodemessage") : Text.translatable("net.clayborn.accurateblockplacement.vanillaplacementmodemessage"));
+				AccurateBlockPlacementConfig.save();
+
+				if (MC.player != null && AccurateBlockPlacementConfig.confirmation) {
+					MC.player.sendMessage(isAccurateBlockPlacementEnabled ? Text.translatable("net.clayborn.accurateblockplacement.modplacementmodemessage") : Text.translatable("net.clayborn.accurateblockplacement.vanillaplacementmodemessage"), AccurateBlockPlacementConfig.confirmationType);
+				}
+			}
+			while(break_keybind.wasPressed()) {
+				isFastBlockBreakingEnabled = !isFastBlockBreakingEnabled;
+				AccurateBlockPlacementConfig.save();
+
+				if (MC.player != null && AccurateBlockPlacementConfig.confirmation) {
+					MC.player.sendMessage(isFastBlockBreakingEnabled ? Text.translatable("net.clayborn.accurateblockplacement.fastbreakingenabled") : Text.translatable("net.clayborn.accurateblockplacement.fastbreakingdisabled"), AccurateBlockPlacementConfig.confirmationType);
+				}
 			}
 		});
 	}
