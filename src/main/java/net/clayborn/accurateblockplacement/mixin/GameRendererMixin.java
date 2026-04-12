@@ -254,6 +254,11 @@ public abstract class GameRendererMixin {
 			return;
 		}
 
+		// if the target block is a BlockWithEntity (i.e. storage container) or BedBlock and we are actively placing blocks, prevent interaction
+		if ((targetBlock instanceof BlockWithEntity || targetBlock instanceof BedBlock) && !freshKeyPress && client.options.useKey.isPressed()) {
+			return;
+		}
+
 		// are they holding the use key and is the item to use a block?
 		// also is the SAME item we started with if we are in repeat mode?
 		// note: check both freshKey and current state in cause of shitty frame rates
