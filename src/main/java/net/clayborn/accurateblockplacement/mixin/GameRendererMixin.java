@@ -229,6 +229,11 @@ public abstract class GameRendererMixin {
 			return;
 		}
 
+		// if player is actively using an item (i.e. a shield), let vanilla take over
+		if(client.player.isUsingItem()) {
+			return;
+		}
+
 		// if the item isn't allowed, let vanilla take over
 		if(!isItemAllowed(currentItem)) {
 			return;
