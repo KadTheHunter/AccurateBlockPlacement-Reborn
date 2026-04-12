@@ -259,6 +259,11 @@ public abstract class GameRendererMixin {
 			return;
 		}
 
+		// if the hand item and target block are both scaffolding, let vanilla take over
+		if ((currentItem instanceof ScaffoldingItem) && (targetBlock instanceof ScaffoldingBlock)) {
+			return;
+		}
+		
 		// are they holding the use key and is the item to use a block?
 		// also is the SAME item we started with if we are in repeat mode?
 		// note: check both freshKey and current state in cause of shitty frame rates
