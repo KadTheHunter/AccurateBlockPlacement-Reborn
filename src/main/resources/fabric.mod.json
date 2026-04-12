@@ -33,6 +33,9 @@
 	"entrypoints": {
 		"client": [
 			"net.clayborn.accurateblockplacement.AccurateBlockPlacementMod"
+		],
+		"modmenu": [
+			"net.clayborn.accurateblockplacement.config.ModMenuPlugin"
 		]
 	},
 	"mixins": [
