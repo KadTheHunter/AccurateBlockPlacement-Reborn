@@ -234,11 +234,6 @@ public abstract class GameRendererMixin {
 			return;
 		}
 
-		// if the item isn't a block, shovel, hoe or axe, let vanilla take over
-		if(!(currentItem instanceof BlockItem || currentItem instanceof ShovelItem || currentItem instanceof HoeItem || currentItem instanceof AxeItem)) {
-			return;
-		}
-
 		// if the item we are holding is activatable, let vanilla take over
 		// important to note that this will NOT catch Hoes, Shovels or Axes, as they're exempted in the method called
 		if(doesItemHaveOverriddenUseMethod(currentItem)) {
