@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(ClientPlayerInteractionManager.class)
 public class ClientPlayerInteractionManagerMixin {
-    @ModifyConstant(method = "updateBlockBreakingProgress", constant = @Constant(intValue = 5))
+    @ModifyConstant(method = "updateBlockBreakingProgress", constant = @Constant(intValue = 5), require = 0)
     private int FastBlockBreaking(int value) {
         return AccurateBlockPlacementMod.isFastBlockBreakingEnabled ? 0 : value;
     }
