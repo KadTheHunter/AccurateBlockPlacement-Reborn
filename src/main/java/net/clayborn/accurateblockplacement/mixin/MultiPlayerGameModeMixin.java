@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(MultiPlayerGameMode.class)
 public class MultiPlayerGameModeMixin {
-    @ModifyConstant(method = "continueDestroyBlock", constant = @Constant(intValue = 5))
+    @ModifyConstant(method = "continueDestroyBlock", constant = @Constant(intValue = 5), require = 0)
     private int FastBlockBreaking(int value) {
         return AccurateBlockPlacementMod.isFastBlockBreakingEnabled ? 0 : value;
     }
