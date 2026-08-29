@@ -277,6 +277,12 @@ public abstract class GameRendererMixin {
 			return;
 		}
 
+		// if the mainhand item is bonemeal and the target block is bonemealable, let vanilla take over
+		ItemStack mainHandItem = client.player.getStackInHand(Hand.MAIN_HAND);
+		if (mainHandItem.getItem() instanceof BoneMealItem && targetBlock instanceof Fertilizable) {
+			return;
+		}
+
 		// are they holding the use key and is the item to use a block?
 		// also is the SAME item we started with if we are in repeat mode?
 		// note: check both freshKey and current state in cause of shitty frame rates
